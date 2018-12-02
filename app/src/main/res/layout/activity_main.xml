@@ -6,12 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="385dp"
+        android:layout_height="362dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:columnCount="8"
+        android:rowCount="8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:text="Cell 0 |"
+            android:textSize="14dip" />
+
+
+        <Button
+            android:id="@+id/button00"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button06"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button05"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="6"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button04"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="5"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button03"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="4"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button02"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="3"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button01"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="2"
+            android:onClick="placesymbol"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button07"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_row="5"
+            android:layout_column="2"
+            android:onClick="placesymbol"
+            android:text="" />
+
+
+    </GridLayout>
+
+
+
     <Button
         android:id="@+id/place_s"
-        android:layout_width="59dp"
+        android:layout_width="60dp"
         android:layout_height="66dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/ic_launcher_background"
+        android:onClick="sendMessage"
         android:text="S"
         app:layout_constraintStart_toEndOf="@+id/turnends"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,12 +122,13 @@
         android:layout_marginEnd="144dp"
         android:layout_marginRight="144dp"
         android:background="@color/bg_screen1"
+        android:onClick="sendMessage2"
         android:text="O"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/checkformatch"
+        android:id="@+id/matchismade"
         android:layout_width="68dp"
         android:layout_height="46dp"
         android:layout_marginTop="96dp"
@@ -42,8 +141,8 @@
 
     <Button
         android:id="@+id/makeamatch"
-        android:layout_width="69dp"
-        android:layout_height="45dp"
+        android:layout_width="68dp"
+        android:layout_height="46dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
@@ -54,11 +153,11 @@
 
     <Button
         android:id="@+id/giveup"
-        android:layout_width="54dp"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginRight="124dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginRight="140dp"
         android:background="@color/bg_screen2"
         android:text="Give Up"
         app:layout_constraintEnd_toStartOf="@+id/place_o"
@@ -66,11 +165,11 @@
 
     <Button
         android:id="@+id/turnends"
-        android:layout_width="66dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="68dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="92dp"
         android:background="@color/dot_dark_screen1"
         android:text="Turn End"
         app:layout_constraintStart_toStartOf="@+id/giveup"
@@ -97,4 +196,39 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="273dp" />
+
+    <EditText
+        android:id="@+id/PLAYER_1"
+        android:layout_width="152dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player 1 Score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player 2 Score:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="148dp" />
+
 </android.support.constraint.ConstraintLayout>
+
