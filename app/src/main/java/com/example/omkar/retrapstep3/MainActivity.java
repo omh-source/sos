@@ -1,5 +1,6 @@
 package com.example.omkar.retrapstep3;
 
+import android.content.Intent;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public int score;
+    public boolean checking;
     public int s;
+    public char[] match = new char[3];
+    public int indices;
     public static char symb;
     public static String sym;
     String output;
@@ -47,12 +50,34 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
         // Do something in response to button click
     }
+    public void resetgame(View view) {
+        textView1 = (TextView) findViewById(view.getId());
+
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Menu.class));
+            }
+        });}
 
 
+
+    public void checkmatch(View view) {
+        checking = true;
+        symb = 'C';
+
+}
 
 
     public void placesymbol(View view) {
         int duration = Toast.LENGTH_LONG;
+        if (symb == 'C') {
+            textView1 = (TextView) findViewById(view.getId());
+            match[indices] =  0;
+        }
+
+
+
         if (symb != 'O' && symb != 'S') {
 
             Toast toast = Toast.makeText(getApplicationContext(), "select s or o first.", duration);

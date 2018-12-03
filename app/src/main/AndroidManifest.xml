@@ -18,7 +18,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_welcome" />
-        <activity android:name=".InputDetails"></activity>
+        <activity android:name=".InputDetails" />
+        <activity android:name=".Menu"></activity>
+
+
+
     </application>
 
 </manifest>
