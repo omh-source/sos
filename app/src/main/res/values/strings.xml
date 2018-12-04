@@ -4,6 +4,9 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">Lemme play :/</string>
+    <string name="p1"></string>
+    <string name="title"><font size="30">S O S </font></string>
+
 
     <string name="slide_1_title">Hello sos!</string>
     <string name="slide_1_desc">The easiest way sleep on the job!</string>

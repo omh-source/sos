@@ -33,4 +33,14 @@ public class Menu extends AppCompatActivity {
             }
         });}
 
+    public void showrules(View view) {
+        textView1 = (TextView) findViewById(view.getId());
+
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Menu.this, Ruleset.class));
+            }
+        });}
+
 }
