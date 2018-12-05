@@ -12,12 +12,17 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     public boolean checking;
     public int s;
+    public int sure;
     public char[] match = new char[3];
     public int[] match2 = new int[3];
     public int[] xoffset = new int[3];
     public int[] yoffset = new int [3];
     public int[][] database = new int[3][100];
     public int universal;
+    public int score;
+    public int p1;
+    public int p2;
+    public String player="P1";
     public int indices;
     public static char symb;
     public static String sym;
@@ -46,6 +51,33 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("I TRIED :(");
         // Do something in response to button click
     }
+
+    public void areyousure(View view) {
+        sure++;
+        if(sure >= 3) {
+            //winscreen here
+        }
+        else {int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(getApplicationContext(), "press thrice to confirm endgame", duration);
+            toast.show();}
+
+        
+    }
+    public void setscore() {
+        if(player.equals("P1")) {
+            p1+=score;score=0;
+        }
+        if(player.equals("P2")) {
+            p2+=score;score=0;
+        }
+
+    }
+
+    public void switchturn(View view) {
+        if(player.equals("P1"))  player = "P2"; else player = "P1";
+
+    }
+
 
     public void sendMessage2(View view) {
         CharSequence text = "You selected 'O'!";
@@ -93,6 +125,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public boolean checkhorizontal() {
+        boolean ok = false;
+        if (xoffset[0] + 1 == xoffset [1] && xoffset[1] + 1 == xoffset[2] && xoffset[0] + 2 == xoffset[2]) {
+            ok = true;
+        }
+        if (!ok) {
+            if (xoffset[0] - 1 == xoffset[1] && xoffset[1] - 1 == xoffset[2] && xoffset[0] - 2 == xoffset[2]) {
+                ok = true;
+            }
+        }
+        if (!ok) {
+            if (xoffset[0] == xoffset[1] && xoffset[1] == xoffset[2]) {
+                ok = true;
+            }
+        }
+        return ok;
+
+    }
+    public boolean checkvertical() {
+        boolean ok = false;
+        if (yoffset[0] + 1 == yoffset [1] && yoffset[1] + 1 == yoffset[2] && yoffset[0] + 2 == yoffset[2]) {
+            ok = true;
+        }
+        if (!ok) {
+            if (yoffset[0] - 1 == yoffset[1] && yoffset[1] - 1 == yoffset[2] && yoffset[0] - 2 == yoffset[2]) {
+                ok = true;
+            }
+        }
+        if (!ok) {
+            if (yoffset[0] == yoffset[1] && yoffset[1] == yoffset[2]) {
+                ok = true;
+            }
+        }
+        return ok;
+
+    }
 
 
     public void placesymbol(View view) {
@@ -101,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         if (symb == 'C') {if (indices < 3) {
 
             textView1 = (TextView) findViewById(view.getId());
+            if (textView1 == null || textView1.getText().length() <= 0) {return;}
             match[indices] = textView1.getText().charAt(0);
             String test = "" + match[indices];
             Log.d("buttonid=", textView1.toString());
@@ -121,29 +190,44 @@ Log.e("offset", holder+" "+ holder2);
             Log.d("symbols,", (abs));
             if (match[0] == 'S' && match[2] == 'S' && match[1] == 'O') {
                 int already = 0;
-                for (int i = 0; i < database[0].length; i++) {
-                    if (match2[0] == database[0][i] && match2[1] == database[1][i] && match2[2] == database[2][i]) {
+                for (int i = 0; i < 50; i++) {
+                    if ((match2[0] == database[0][i] || match2[0] == database[2][i])
+                            && match2[1] == database[1][i] && (match2[2] == database[2][i]
+                            || match2[2] == database[0][i])) {
                         already++;
-                    }
+                    }// have we matched before?
                 }
-                int count = 0;
+                int count = 1;
+                //what you should do here:
+                // you've combined all criterai. break them into
+                // vert, hor and dia. that solves this ;)
+
+                if(checkhorizontal() && checkvertical()) {count = 0;}
+
+                /*
                 for (int i = 0; i < 2; i++) {
                     if ((xoffset[i] - 1 != xoffset[i+1] && xoffset[i] + 1 != xoffset[i+1] && xoffset[i] != xoffset[i+1])) {
-                        if ((yoffset[i] - 1 != yoffset[i+1] && yoffset[i] + 1 != yoffset[i+1] && yoffset[i] != yoffset[i+1])) {
+                        if ((yoffset[i] - 1 != yoffset[1] && yoffset[i] + 1 != yoffset[1] && yoffset[i] != yoffset[i+1])) {
                            count++;
-                        }
+                        }// are you straight?
                     }
-                }
+                }//lmao these jokes
+                */
               //  if (count<=1) {text="WORX!"; Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                 //    toast.show();}
                     Log.i("count=",Integer.toString(count));
                 Log.i("already=",Integer.toString(already));
-
+                if(count!=0) {
+                    text="Invalid tile(s) chosen";
+                }
+if (already != 1) {
+    text= "dont' repeat matches!";
+}
 
                 if (already == 1 && count == 0) {
 
                     text = "You just matched!";
-
+score++;
                     universal++;
                 }
                 Log.i("test is ", text);

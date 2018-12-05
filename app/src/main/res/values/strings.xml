@@ -4,7 +4,8 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">Lemme play :/</string>
-    <string name="p1"></string>
+    <string name="p1">0%s</string>
+
     <string name="title"><font size="30">S O S </font></string>
 
 
