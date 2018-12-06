@@ -1,8 +1,10 @@
 package com.example.omkar.retrapstep3;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         //in your OnCreate() method
         textView1 = (TextView) findViewById(R.id.button03);
         //textView1.setText(sym);
-        textView1.setText(getString(R.string.days, sym));
+        textView1.setText(getString(R.string.days, ""));
     }
 
     public void sendMessage(View view) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StringFormatInvalid")
     public void setscore(View view) {
 //add a case to not overwriter players!
         if (player.equals("P1")) {
@@ -104,6 +107,16 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(), "TURN SWITCH.", Toast.LENGTH_LONG);
         toast.show();
 
+    }
+
+    public void recolourshit() {
+        TextView t2 = textView1 = (TextView) findViewById(match2[0]);
+        t2.setTextColor(Color.parseColor("#14a895"));
+        TextView t3 =textView1 = (TextView) findViewById(match2[1]);
+        t3.setTextColor(Color.parseColor("#14a895"));;
+        TextView t4 =textView1 = (TextView) findViewById(match2[2]);
+
+        t4.setTextColor(Color.parseColor("#14a895"));;
     }
 
 
@@ -267,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
                             p1++;
                         } else p2++;
                         universal++;
+                        recolourshit();
                     }
                     Log.i("test is ", text);
                     indices = 0;

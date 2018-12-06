@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:backgroundTint="@color/bg_screen3"
+
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="0dp"
-        android:layout_height="373dp"
+        android:layout_height="419dp"
         android:layout_marginTop="132dp"
         android:columnCount="9"
         android:rowCount="14"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +24,7 @@
         <Button
             android:id="@+id/button00"
             android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_height="48dp"
             android:layout_row="5"
             android:layout_column="0"
             android:onClick="placesymbol"
@@ -51,8 +54,7 @@
             android:layout_height="46dp"
             android:layout_row="5"
             android:layout_column="3"
-            android:onClick="placesymbol"
-            android:text="" />
+            android:onClick="placesymbol" />
 
         <Button
             android:id="@+id/button04"
@@ -104,7 +106,7 @@
         <Button
             android:id="@+id/button10"
             android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_height="47dp"
             android:layout_row="6"
             android:layout_column="0"
             android:onClick="placesymbol"
@@ -131,7 +133,7 @@
         <Button
             android:id="@+id/button13"
             android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_height="47dp"
             android:layout_row="6"
             android:layout_column="3"
             android:onClick="placesymbol"
@@ -771,8 +773,8 @@
         android:layout_height="66dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/ic_launcher_background"
+        android:layout_marginTop="60dp"
+        android:background="@color/dot_light_screen1"
         android:onClick="sendMessage"
         android:text="S"
         app:layout_constraintStart_toEndOf="@+id/turnends"
@@ -782,10 +784,10 @@
         android:id="@+id/place_o"
         android:layout_width="63dp"
         android:layout_height="65dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="144dp"
         android:layout_marginRight="144dp"
-        android:background="@color/bg_screen1"
+        android:background="@color/dot_dark_screen2"
         android:onClick="sendMessage2"
         android:text="O"
         app:layout_constraintEnd_toEndOf="parent"
