@@ -1,8 +1,10 @@
 package com.example.omkar.retrapstep3;
-
+import  	android.graphics.Point;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
+import android.app.Dialog;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -10,23 +12,42 @@ import android.os.Bundle;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.TextView;
+import android.app.ActivityManager;
+import android.util.DisplayMetrics;
+import android.app.Activity;
+import android.view.WindowManager;
+import java.util.List;
+import  	android.content.ComponentName;
+import  	android.util.DisplayMetrics;
+import android.view.Display;
+import  	android.os.Build;
 
 public class MainActivity extends AppCompatActivity {
+
     public boolean checking;
     public int s;
+    public int firstmove=0;
     public int sure;
+    public static double x;
+    public static double y;
+    public double height;
+    public double width;
     public char[] match = new char[3];
     public int[] match2 = new int[3];
     public int[] xoffset = new int[3];
     public int[] yoffset = new int[3];
+    public int resets;
     public int[][] database = new int[3][100];
     public int universal;
     public int score;
-    public int p1;
-    public int p2;
+    public static int p1;
+    public static int p2;
+    public int totalmoves=0;
+    public int duration = Toast.LENGTH_SHORT;
     public String player = "P1";
     public int indices;
     public static char symb;
+
     public static String sym;
     String output;
     // globally
@@ -40,26 +61,44 @@ public class MainActivity extends AppCompatActivity {
         textView1 = (TextView) findViewById(R.id.button03);
         //textView1.setText(sym);
         textView1.setText(getString(R.string.days, ""));
-    }
 
+    }
+    public int get1() {return p1;}
+    public int get2() {return p2;}
     public void sendMessage(View view) {
+        resets=0;
         CharSequence text = "You selected 'S'!";
         symb = 'S';
         sym = "S";
-        int duration = Toast.LENGTH_LONG;
+totalmoves--;
+
         Toast toast = Toast.makeText(getApplicationContext(), text, duration);
         toast.show();
 
-        System.out.println("I TRIED :(");
+
         // Do something in response to button click
     }
+
+
+
+
+
+
 
     public void areyousure(View view) {
         sure++;
         if (sure >= 3) {
-            //winscreen here
-        } else {
-            int duration = Toast.LENGTH_LONG;
+            textView1 = (TextView) findViewById(view.getId());
+
+            Log.e("before: ", Integer.toString(p1) + " and " + Integer.toString(p2));
+            textView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this,WinScreen.class));
+                }
+            });}
+         else {
+
             Toast toast = Toast.makeText(getApplicationContext(), "press thrice to confirm endgame", duration);
             toast.show();
         }
@@ -67,19 +106,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
     @SuppressLint("StringFormatInvalid")
     public void setscore(View view) {
+        resets=0;
+
 //add a case to not overwriter players!
         if (player.equals("P1")) {
             //p1+=score;score=0;
             if(Integer.toString(view.getId()).charAt((Integer.toString(view.getId())).length() - 2) == '2') {p2+=score;}
 
-            Log.e("socre", Integer.toString(p1) + " player 1's score");
             textView1 = (TextView) findViewById(view.getId());
             String s = textView1.getText().toString();
             if(textView1.getText().charAt(7) == '1') {
                 textView1.setText(getString(R.string.player1, Integer.toString(p1)));
-                Toast toast = Toast.makeText(getApplicationContext(), "score updated..", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "score updated..", Toast.LENGTH_SHORT);
                 toast.show();
             }
 
@@ -88,13 +131,13 @@ public class MainActivity extends AppCompatActivity {
             //p2+=score;score=0;
             if(Integer.toString(view.getId()).charAt((Integer.toString(view.getId())).length() - 2) == '1') {p1+=score;}
 
-                Log.e("socre", Integer.toString(p2) + " player 2's score");
+              //  Log.e("socre", Integer.toString(p2) + " player 2's score");
                 textView1 = (TextView) findViewById(view.getId());
             String s = textView1.getText().toString();
             Log.i("tryle",textView1.toString());
             if(textView1.getText().charAt(7) == '2') {
                 textView1.setText(getString(R.string.player2, Integer.toString(p2)));
-                Toast toast = Toast.makeText(getApplicationContext(), "score updated..", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "score updated..", Toast.LENGTH_SHORT);
                 toast.show();
             }
 
@@ -104,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (player.equals("P1")) {player = "P2"; if(score > 0) {p1+=score; }}
         else {player = "P1";if(score > 0) {p2+=score; }}
-        Toast toast = Toast.makeText(getApplicationContext(), "TURN SWITCH.", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), "TURN SWITCH.", Toast.LENGTH_SHORT);
         toast.show();
 
     }
@@ -124,21 +167,31 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "You selected 'O'!";
         symb = 'O';
         sym = "O";
-        int duration = Toast.LENGTH_LONG;
+
         Toast toast = Toast.makeText(getApplicationContext(), text, duration);
         toast.show();
-        // Do something in response to button click
     }
 
     public void resetgame(View view) {
+        resets++;
+        if (resets >= 2) {
         textView1 = (TextView) findViewById(view.getId());
 
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Menu.class));
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
             }
         });
+
+    }
+    if(resets >=4) {Toast toast = Toast.makeText(getApplicationContext(), "Successful RESET", Toast.LENGTH_SHORT);
+        toast.show();}
+    else {
+
+            Toast toast = Toast.makeText(getApplicationContext(), "Press 3X to confirm reset", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
 
@@ -156,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkmatch(View view) {
         checking = true;
-        int duration = Toast.LENGTH_LONG;
+
         symb = 'C';
         String text = "";
         if (indices > 3) {
@@ -208,7 +261,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void placesymbol(View view) {
-        int duration = Toast.LENGTH_LONG;
+        resets=0;
+
+        Log.e("height and width=", Double.toString(height)+"  "+Double.toString(width));
+        Log.e("total moves till grid=",Integer.toString(totalmoves));
         String text = "Summarize failure.";
         if (symb == 'C') {
             if (indices < 3) {

@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Below are actually my colors-->
+    <color name="orange_red" tools:ignore="MissingDefaultResource">#e33712</color>
+<color name="midlime_green" >#6ee312</color>
+    <color name="fresh_green">#12e31f</color>
+    <color name="midfresh_purple">#bd44bb</color>
+    <color name="middeep_blue">#5c6bc0</color>
+    <color name="light_orange">#d69e5f</color>
+
+
+
+
+
+
+
+
+
+
+
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>

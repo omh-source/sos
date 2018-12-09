@@ -14,6 +14,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.app.Activity;
+
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.telephony.SmsManager;
 public class Menu extends AppCompatActivity {
 
     @Override
@@ -42,5 +51,14 @@ public class Menu extends AppCompatActivity {
                 startActivity(new Intent(Menu.this, Ruleset.class));
             }
         });}
+
+        public void challenge(View view) {textView1 = (TextView) findViewById(view.getId());
+
+            textView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Menu.this, smsexp.class));
+                }
+            });}
 
 }

@@ -3,6 +3,8 @@
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
+    <integer name="one">0</integer>
+    <integer name="two">0</integer>
     <string name="start">Lemme play :/</string>
     <string name="player1">Player 1 Score : %s</string>
     <string name="player2">Player 2 Score : %s</string>
@@ -25,5 +27,7 @@
     <string name="play_again">Play Again</string>
 
 
-    <string name="days"><font size = "22">%s</font></string>
+    <string name="days"><font size="22">%s</font></string>
+    <string name="years"><font size="22">%s</font></string>
+    <string name="decades"><font size="22">%s</font></string>
 </resources>
