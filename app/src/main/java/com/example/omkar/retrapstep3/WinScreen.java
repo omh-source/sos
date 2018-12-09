@@ -20,17 +20,17 @@ public class WinScreen extends MainActivity {
         setContentView(R.layout.activity_win_screen);
     }
 
-
     public void winner(View view) {
         int p=get1();
         int q=get2();
         Log.e("after: ", Integer.toString(p) + " and " + Integer.toString(q));
-        String texty = "PLAYER 1 !!!";
-       if(p < q) texty = "PLAYER 2 !!!!";
+        String texty = "Winner : PLAYER 1 !";
+       if(p < q) texty = "Winner : PLAYER 2 !";
        else if (p == q) texty = "Match tied! Good game.";
-            textView1.setText(getString(R.string.years, texty));
-            Toast toast = Toast.makeText(getApplicationContext(), texty, Toast.LENGTH_LONG);
-            toast.show();
+        textView1 = (TextView) findViewById(view.getId());
+        textView1.setText(getString(R.string.centuries, texty));
+
+
 
     }
     public void backwego(View view) {

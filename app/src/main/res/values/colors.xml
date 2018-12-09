@@ -4,10 +4,13 @@
     <color name="orange_red" tools:ignore="MissingDefaultResource">#e33712</color>
 <color name="midlime_green" >#6ee312</color>
     <color name="fresh_green">#12e31f</color>
-    <color name="midfresh_purple">#bd44bb</color>
+    <color name="midfresh_purple">#e151de</color>
     <color name="middeep_blue">#5c6bc0</color>
     <color name="light_orange">#d69e5f</color>
-
+    <color name="intense_deep_purple">#301433</color>
+    <color name="severe_deep_purple">#3b0141</color>
+    <color name="darkblack_blue">#34354b</color>
+    <color name="green_yellow">#a8ea0e</color>
 
 
 

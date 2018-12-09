@@ -8,20 +8,20 @@
     <string name="start">Lemme play :/</string>
     <string name="player1">Player 1 Score : %s</string>
     <string name="player2">Player 2 Score : %s</string>
-    <string name="title"><font size="30">S O S </font></string>
+    <string name="title"><font size="25">S O S \n A new way to play tic-tac-toe!</font></string>
 
 
     <string name="slide_1_title">Hello sos!</string>
-    <string name="slide_1_desc">The easiest way sleep on the job!</string>
+    <string name="slide_1_desc">Welcome to our app.</string>
 
-    <string name="slide_2_title">so there are rules,</string>
-    <string name="slide_2_desc">heres what we do</string>
+    <string name="slide_2_title">This game\'s just like tic-tac-toe,</string>
+    <string name="slide_2_desc">Except with a dash of complexity</string>
 
-    <string name="slide_3_title">more rules</string>
-    <string name="slide_3_desc">heres what we dont do!</string>
+    <string name="slide_3_title">Get points matching S-O-S</string>
+    <string name="slide_3_desc">Vertically, horizontally or diagonally</string>
 
-    <string name="slide_4_title">what yoyu wait for?l</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+    <string name="slide_4_title">Get a match? Make another move! Rack up those points!</string>
+    <string name="slide_4_desc">Enough talk! Let\'s play.</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
@@ -30,4 +30,5 @@
     <string name="days"><font size="22">%s</font></string>
     <string name="years"><font size="22">%s</font></string>
     <string name="decades"><font size="22">%s</font></string>
+    <string name="centuries"><font size="22">%s</font></string>
 </resources>

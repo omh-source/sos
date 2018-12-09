@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+<font
+    android:fontStyle="normal"
+    android:fontWeight="400"
+    android:font="@font/showcard_gothic"
+    app:fontStyle="normal"
+    app:fontWeight="400"
+    app:font="@font/showcard_gothic"
+    />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/angel_vintage"
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/angel_vintage"
+        />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/libre_baskerville_italic"
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/libre_baskerville_italic"
+        />
+</font-family>

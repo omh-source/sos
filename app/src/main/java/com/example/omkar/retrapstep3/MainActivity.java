@@ -174,7 +174,7 @@ totalmoves--;
 
     public void resetgame(View view) {
         resets++;
-        if (resets >= 2) {
+        if (resets >= 1) {
         textView1 = (TextView) findViewById(view.getId());
 
         textView1.setOnClickListener(new View.OnClickListener() {
@@ -185,8 +185,7 @@ totalmoves--;
         });
 
     }
-    if(resets >=4) {Toast toast = Toast.makeText(getApplicationContext(), "Successful RESET", Toast.LENGTH_SHORT);
-        toast.show();}
+
     else {
 
             Toast toast = Toast.makeText(getApplicationContext(), "Press 3X to confirm reset", Toast.LENGTH_SHORT);

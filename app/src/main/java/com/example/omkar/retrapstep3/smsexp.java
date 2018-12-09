@@ -29,6 +29,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 public class smsexp extends AppCompatActivity {
+    //This code was taken from tutorialspoint.com and modified to work with this app
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
     Button sendBtn;
     EditText txtphoneNo;
