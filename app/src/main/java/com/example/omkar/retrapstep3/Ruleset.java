@@ -23,6 +23,7 @@ public class Ruleset extends WelcomeActivity {
                 startActivity(new Intent(Ruleset.this, WelcomeActivity.class));
             }
         });}
+        //this returns you to the 4 intro slides doubling as the rules
 
     public void reallyreturn(View view) {
         textView1 = (TextView) findViewById(view.getId());
@@ -33,4 +34,5 @@ public class Ruleset extends WelcomeActivity {
                 startActivity(new Intent(Ruleset.this, Menu.class));
             }
         });}
+        //this returns you to the main menu
 }

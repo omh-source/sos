@@ -2,7 +2,6 @@ package com.example.omkar.retrapstep3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
-//rly tho, this was it if you paid attention.
+    //rly tho, this was it if you paid attention.
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
@@ -33,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Checking for first time launch - before calling setContentView()
+        // Below code checks for the first launch.
         /*
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
@@ -41,7 +40,6 @@ public class WelcomeActivity extends AppCompatActivity {
             finish();
         }*/
 
-        // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
@@ -52,18 +50,13 @@ public class WelcomeActivity extends AppCompatActivity {
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
-
-
-        // layouts of all welcome sliders
-        // add few more layouts if you want
         layouts = new int[]{
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2,
                 R.layout.welcome_slide3,
                 R.layout.welcome_slide4,
-                };
-
-        // adding bottom dots
+        };
+        //these are the 4 welcome slides shown on opening the app. more can be added.
         addBottomDots(0);
 
         // making notification bar transparent
@@ -83,8 +76,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // checking for last page
-                // if last page home screen will be launched
+                //checks for the last page, and will display different buttons if true.
                 int current = getItem(+1);
                 if (current < layouts.length) {
                     // move to next screen
@@ -125,20 +117,19 @@ public class WelcomeActivity extends AppCompatActivity {
         finish();
     }
 
-    //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
             addBottomDots(position);
 
-            // changing the next button text 'NEXT' / 'GOT IT'
+
             if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
+                // on last page, change text accordingly
                 btnNext.setText("Awesome!");
                 btnSkip.setVisibility(View.GONE);
             } else {
-                // still pages are left
+                // not on last page, so NEXT buttons are visible
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
             }

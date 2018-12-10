@@ -9,7 +9,7 @@ import android.content.Intent;
 
 
 public class Menu extends AppCompatActivity {
-
+//Main menu of the game. it'll call various new activities depending on your choice
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(new Intent(Menu.this, MainActivity.class));
             }
         });
-    }
+    }//starts the game
 
     public void showrules(View view) {
         textView1 = (TextView) findViewById(view.getId());
@@ -38,7 +38,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(new Intent(Menu.this, Ruleset.class));
             }
         });
-    }
+    } // shows the rules
 
     public void challenge(View view) {
         textView1 = (TextView) findViewById(view.getId());
@@ -49,6 +49,6 @@ public class Menu extends AppCompatActivity {
                 startActivity(new Intent(Menu.this, smsexp.class));
             }
         });
-    }
+    } // Challenge your friends to play
 
 }

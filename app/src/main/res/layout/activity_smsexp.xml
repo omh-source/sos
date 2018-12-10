@@ -55,11 +55,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="380dp"
+        android:background="@color/bg_screen3"
         android:onClick="backwego"
         android:text="Back to Menu"
         android:textColor="@color/intense_deep_purple"
-        android:background="@color/bg_screen3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -14,10 +14,13 @@
         android:layout_marginStart="88dp"
         android:layout_marginLeft="88dp"
         android:layout_marginTop="184dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
+
         android:background="@color/fresh_green"
         android:onClick="returntomenu"
-
         android:text="View rules"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +31,12 @@
         android:layout_marginStart="132dp"
         android:layout_marginLeft="132dp"
         android:layout_marginTop="304dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
         android:background="@color/midlime_green"
         android:onClick="reallyreturn"
         android:text="Back to Menu"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

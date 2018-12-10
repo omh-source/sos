@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     public int score;
     public static int p1;
     public static int p2;
-    public int totalmoves = 0;
     public int duration = Toast.LENGTH_SHORT;
     public String player = "P1";
     public int indices;
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //in your OnCreate() method
         textView1 = (TextView) findViewById(R.id.button03);
         //textView1.setText(sym);
         textView1.setText(getString(R.string.days, ""));
@@ -65,13 +63,8 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "You selected 'S'!";
         symb = 'S';
         sym = "S";
-        totalmoves--;
-
         Toast toast = Toast.makeText(getApplicationContext(), text, duration);
         toast.show();
-
-
-        // Do something in response to button click
     }
 
 
@@ -114,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 textView1.setText(getString(R.string.player1, Integer.toString(p1)));
                 Toast toast = Toast.makeText(getApplicationContext(), "Score updated...", Toast.LENGTH_SHORT);
                 toast.show();
-            }
+            }//exploits the characterstics of the button name to update the right score
 
         }
         if (player.equals("P2")) {
@@ -149,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             if (score > 0) {
                 p2 += score;
             }
-        }
+        }// simple stuff, if player 1 ends his turn, it's now player 2's turn.
         Toast toast = Toast.makeText(getApplicationContext(), "TURN SWITCH.", Toast.LENGTH_SHORT);
         toast.show();
 
@@ -160,11 +153,9 @@ public class MainActivity extends AppCompatActivity {
         t2.setTextColor(Color.parseColor("#14a895"));
         TextView t3 = textView1 = (TextView) findViewById(match2[1]);
         t3.setTextColor(Color.parseColor("#14a895"));
-        ;
         TextView t4 = textView1 = (TextView) findViewById(match2[2]);
-
         t4.setTextColor(Color.parseColor("#14a895"));
-        ;
+        //Creative function name. this recolors the grid button after they're matched successfully
     }
 
 
@@ -172,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         CharSequence text = "You selected 'O'!";
         symb = 'O';
         sym = "O";
-
+//Separate functions, why not. This selects 'O' for you to place.
         Toast toast = Toast.makeText(getApplicationContext(), text, duration);
         toast.show();
     }
@@ -180,7 +171,30 @@ public class MainActivity extends AppCompatActivity {
     public void resetgame(View view) {
         resets++;
         if (resets >= 1) {
+            //resets all variables to their default value to prevent overlap between games
             textView1 = (TextView) findViewById(view.getId());
+            p1 = 0;
+            player = "P1";
+            p2 = 0;
+            score = 0;
+            sym = "";
+            symb = 'F';
+            checking = false;
+            s = 0;
+            firstmove = 0;
+            sure = 0;
+            x = 0.0;
+            y = 0;
+            height = 0;
+            width = 0.0;
+            match = new char[3];
+            match2 = new int[3];
+            xoffset = new int[3];
+            yoffset = new int[3];
+            resets = 0;
+            database = new int[3][100];
+            universal = 0;
+
 
             textView1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -190,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
         } else {
-
+//Simple stuff, if you trigger a reset, it loads the same activity again from scratch.
             Toast toast = Toast.makeText(getApplicationContext(), "Press 4X to confirm reset", Toast.LENGTH_SHORT);
             toast.show();
         }
@@ -199,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showrules(View view) {
         textView1 = (TextView) findViewById(view.getId());
-
+//Show the rules
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,7 +231,8 @@ public class MainActivity extends AppCompatActivity {
         if (indices > 3) {
             indices = 0;
         }
-//rly tho, matchmaking
+        //This activates a flag and makes sure to check for a match in method placesymbol
+        // rly tho, matchmaking
         Toast toaster = Toast.makeText(getApplicationContext(), "Choose 3 tiles to match!", duration);
         toaster.show();
 
@@ -242,6 +257,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Above and below functions could really be combined into one...
+// The check if a match is valid horizontally and vertically.
     public boolean checkvertical() {
         boolean ok = false;
         if (yoffset[0] + 1 == yoffset[1] && yoffset[1] + 1 == yoffset[2] && yoffset[0] + 2 == yoffset[2]) {
@@ -266,9 +283,10 @@ public class MainActivity extends AppCompatActivity {
         resets = 0;
 
         Log.e("height and width=", Double.toString(height) + "  " + Double.toString(width));
-        Log.e("total moves till grid=", Integer.toString(totalmoves));
+
         String text = "Match failed.";
         if (symb == 'C') {
+            //Special code to check for matches
             if (indices < 3) {
 //p.s. one person 2
                 textView1 = (TextView) findViewById(view.getId());
@@ -282,6 +300,8 @@ public class MainActivity extends AppCompatActivity {
                 match2[indices] = view.getId();
                 String holder = "" + textView1.toString().charAt(textView1.toString().length() - 2);
                 String holder2 = "" + textView1.toString().charAt(textView1.toString().length() - 3);
+                //This also exploits the naming convention of grid buttons
+                //wherin each button is named according to it's grid position
                 int i = Integer.parseInt(holder);
                 int j = Integer.parseInt(holder2);
                 xoffset[indices] = i;
@@ -293,10 +313,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 indices = 0;
                 String abs = "" + match[0] + match[1] + match[2];
+                //This logs a sting of 3 matched tiles for reference
                 Log.d("symbols,", (abs));
                 if (match[0] == 'S' && match[2] == 'S' && match[1] == 'O') {
                     int already = 0;
-                    for (int i = 0; i < 50; i++) {
+                    for (int i = 0; i < 100; i++) {
+                        //This checks if you've made a match before, hence the name.
                         if ((match2[0] == database[0][i] || match2[0] == database[2][i])
                                 && match2[1] == database[1][i] && (match2[2] == database[2][i]
                                 || match2[2] == database[0][i])) {
@@ -309,6 +331,8 @@ public class MainActivity extends AppCompatActivity {
                     // vert, hor and dia. that solves this ;)
 
                     if (checkhorizontal() && checkvertical()) {
+                        //if count is 0, it means the match was valid both vertically and horizontally.
+
                         count = 0;
                     }
 
@@ -364,14 +388,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast toasty = Toast.makeText(getApplicationContext(), "Tile already full", duration);
                 toasty.show();
             }
+            //Places a tile as per S/O selection and toasts to the screen.
             symb = 'G';
 
 
         }
-
-
     }
 
 
 }
-//finito! that was shorter than expected.
+//finito! that was shorter than expected...and took longer to type ;P

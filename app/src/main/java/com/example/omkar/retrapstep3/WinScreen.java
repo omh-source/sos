@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class WinScreen extends MainActivity {
-
+//just a normal winscreen,. prints the winner- the player who has higher score
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

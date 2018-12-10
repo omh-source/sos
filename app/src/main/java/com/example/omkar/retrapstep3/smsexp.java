@@ -37,7 +37,7 @@ public class smsexp extends AppCompatActivity {
         sendBtn = (Button) findViewById(R.id.button29);
         txtphoneNo = (EditText) findViewById(R.id.plain_text_input);
         txtphoneNo2 = (EditText) findViewById(R.id.plain_text_input2);
-
+//Gets Edittexts of the phone number entries and enter button
         sendBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 sendSMSMessage();
@@ -46,7 +46,7 @@ public class smsexp extends AppCompatActivity {
     }
 
     public void backwego(View view) {
-
+//Sends you back to the main menu when clicked
         textView1 = (TextView) findViewById(view.getId());
 
         textView1.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +61,7 @@ public class smsexp extends AppCompatActivity {
     protected void sendSMSMessage() {
         phoneNo = txtphoneNo.getText().toString();
         senderNo = txtphoneNo2.getText().toString();
+        //Gets both phone numbers
         message = "Hi, you were invited for a game of SOS!";
         Log.e("reciever=", phoneNo);
         Log.e("sender=", senderNo);
@@ -69,7 +70,7 @@ public class smsexp extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.SEND_SMS)) {
-
+//Gets permissions for sending SMS(prompts user)
                 Log.i("if brack,", "");
             } else {
                 Log.i("else brack,", "");
@@ -137,7 +138,9 @@ public class smsexp extends AppCompatActivity {
 
         phoneNo = txtphoneNo.getText().toString();
         senderNo = txtphoneNo2.getText().toString();
+        //This re-assigns variables in case they aren't, and sends an SMS
         smsManager.sendTextMessage(new String(senderNo), null, "sms message", null, null);
+        //Honestly, I have no clue why I keep the below 5 lines.
         EditText x = (EditText) findViewById(R.id.plain_text_input);
         Editable y = x.getText();
         Log.i("failed at saiv", "");
