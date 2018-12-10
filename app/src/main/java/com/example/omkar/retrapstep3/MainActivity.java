@@ -1,32 +1,20 @@
 package com.example.omkar.retrapstep3;
-import  	android.graphics.Point;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
-import android.app.Dialog;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
-import android.widget.Button;
 import android.widget.TextView;
-import android.app.ActivityManager;
-import android.util.DisplayMetrics;
-import android.app.Activity;
-import android.view.WindowManager;
-import java.util.List;
-import  	android.content.ComponentName;
-import  	android.util.DisplayMetrics;
-import android.view.Display;
-import  	android.os.Build;
 
 public class MainActivity extends AppCompatActivity {
 
     public boolean checking;
     public int s;
-    public int firstmove=0;
+    public int firstmove = 0;
     public int sure;
     public static double x;
     public static double y;
@@ -42,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public int score;
     public static int p1;
     public static int p2;
-    public int totalmoves=0;
+    public int totalmoves = 0;
     public int duration = Toast.LENGTH_SHORT;
     public String player = "P1";
     public int indices;
@@ -63,14 +51,21 @@ public class MainActivity extends AppCompatActivity {
         textView1.setText(getString(R.string.days, ""));
 
     }
-    public int get1() {return p1;}
-    public int get2() {return p2;}
+
+    public int get1() {
+        return p1;
+    }
+
+    public int get2() {
+        return p2;
+    }
+
     public void sendMessage(View view) {
-        resets=0;
+        resets = 0;
         CharSequence text = "You selected 'S'!";
         symb = 'S';
         sym = "S";
-totalmoves--;
+        totalmoves--;
 
         Toast toast = Toast.makeText(getApplicationContext(), text, duration);
         toast.show();
@@ -78,11 +73,6 @@ totalmoves--;
 
         // Do something in response to button click
     }
-
-
-
-
-
 
 
     public void areyousure(View view) {
@@ -94,12 +84,12 @@ totalmoves--;
             textView1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this,WinScreen.class));
+                    startActivity(new Intent(MainActivity.this, WinScreen.class));
                 }
-            });}
-         else {
+            });
+        } else {
 
-            Toast toast = Toast.makeText(getApplicationContext(), "press thrice to confirm endgame", duration);
+            Toast toast = Toast.makeText(getApplicationContext(), "Press thrice to confirm endgame", duration);
             toast.show();
         }
 
@@ -107,46 +97,59 @@ totalmoves--;
     }
 
 
-
-
     @SuppressLint("StringFormatInvalid")
     public void setscore(View view) {
-        resets=0;
+        resets = 0;
 
 //add a case to not overwriter players!
         if (player.equals("P1")) {
             //p1+=score;score=0;
-            if(Integer.toString(view.getId()).charAt((Integer.toString(view.getId())).length() - 2) == '2') {p2+=score;}
+            if (Integer.toString(view.getId()).charAt((Integer.toString(view.getId())).length() - 2) == '2') {
+                p2 += score;
+            }
 
             textView1 = (TextView) findViewById(view.getId());
             String s = textView1.getText().toString();
-            if(textView1.getText().charAt(7) == '1') {
+            if (textView1.getText().charAt(7) == '1') {
                 textView1.setText(getString(R.string.player1, Integer.toString(p1)));
-                Toast toast = Toast.makeText(getApplicationContext(), "score updated..", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "Score updated...", Toast.LENGTH_SHORT);
                 toast.show();
             }
 
         }
         if (player.equals("P2")) {
             //p2+=score;score=0;
-            if(Integer.toString(view.getId()).charAt((Integer.toString(view.getId())).length() - 2) == '1') {p1+=score;}
-
-              //  Log.e("socre", Integer.toString(p2) + " player 2's score");
-                textView1 = (TextView) findViewById(view.getId());
-            String s = textView1.getText().toString();
-            Log.i("tryle",textView1.toString());
-            if(textView1.getText().charAt(7) == '2') {
-                textView1.setText(getString(R.string.player2, Integer.toString(p2)));
-                Toast toast = Toast.makeText(getApplicationContext(), "score updated..", Toast.LENGTH_SHORT);
-                toast.show();
+            if (Integer.toString(view.getId()).charAt((Integer.toString(view.getId())).length() - 2) == '1') {
+                p1 += score;
             }
 
-    }}
+            //  Log.e("socre", Integer.toString(p2) + " player 2's score");
+            textView1 = (TextView) findViewById(view.getId());
+            String s = textView1.getText().toString();
+            Log.i("tryle", textView1.toString());
+            if (textView1.getText().charAt(7) == '2') {
+                textView1.setText(getString(R.string.player2, Integer.toString(p2)));
+                Toast toast = Toast.makeText(getApplicationContext(), "Score Updated...", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+// oh, what was fun, defiantly the sms api
+
+        }
+    }
 
     public void switchturn(View view) {
 
-        if (player.equals("P1")) {player = "P2"; if(score > 0) {p1+=score; }}
-        else {player = "P1";if(score > 0) {p2+=score; }}
+        if (player.equals("P1")) {
+            player = "P2";
+            if (score > 0) {
+                p1 += score;
+            }
+        } else {
+            player = "P1";
+            if (score > 0) {
+                p2 += score;
+            }
+        }
         Toast toast = Toast.makeText(getApplicationContext(), "TURN SWITCH.", Toast.LENGTH_SHORT);
         toast.show();
 
@@ -155,11 +158,13 @@ totalmoves--;
     public void recolourshit() {
         TextView t2 = textView1 = (TextView) findViewById(match2[0]);
         t2.setTextColor(Color.parseColor("#14a895"));
-        TextView t3 =textView1 = (TextView) findViewById(match2[1]);
-        t3.setTextColor(Color.parseColor("#14a895"));;
-        TextView t4 =textView1 = (TextView) findViewById(match2[2]);
+        TextView t3 = textView1 = (TextView) findViewById(match2[1]);
+        t3.setTextColor(Color.parseColor("#14a895"));
+        ;
+        TextView t4 = textView1 = (TextView) findViewById(match2[2]);
 
-        t4.setTextColor(Color.parseColor("#14a895"));;
+        t4.setTextColor(Color.parseColor("#14a895"));
+        ;
     }
 
 
@@ -175,20 +180,18 @@ totalmoves--;
     public void resetgame(View view) {
         resets++;
         if (resets >= 1) {
-        textView1 = (TextView) findViewById(view.getId());
+            textView1 = (TextView) findViewById(view.getId());
 
-        textView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
-            }
-        });
+            textView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                }
+            });
 
-    }
+        } else {
 
-    else {
-
-            Toast toast = Toast.makeText(getApplicationContext(), "Press 3X to confirm reset", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "Press 4X to confirm reset", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -214,8 +217,8 @@ totalmoves--;
         if (indices > 3) {
             indices = 0;
         }
-
-        Toast toaster = Toast.makeText(getApplicationContext(), "choose a match tile " + (indices + 1), duration);
+//rly tho, matchmaking
+        Toast toaster = Toast.makeText(getApplicationContext(), "Choose 3 tiles to match!", duration);
         toaster.show();
 
     }
@@ -260,14 +263,14 @@ totalmoves--;
 
 
     public void placesymbol(View view) {
-        resets=0;
+        resets = 0;
 
-        Log.e("height and width=", Double.toString(height)+"  "+Double.toString(width));
-        Log.e("total moves till grid=",Integer.toString(totalmoves));
-        String text = "Summarize failure.";
+        Log.e("height and width=", Double.toString(height) + "  " + Double.toString(width));
+        Log.e("total moves till grid=", Integer.toString(totalmoves));
+        String text = "Match failed.";
         if (symb == 'C') {
             if (indices < 3) {
-
+//p.s. one person 2
                 textView1 = (TextView) findViewById(view.getId());
                 if (textView1 == null || textView1.getText().length() <= 0) {
                     return;
@@ -286,6 +289,7 @@ totalmoves--;
                 Log.e("offset", holder + " " + holder2);
                 database[indices][universal] = view.getId();
                 indices++;
+                //ain't this the cite of cites? nah, not here. you'll find that elsewhere.
             } else {
                 indices = 0;
                 String abs = "" + match[0] + match[1] + match[2];
@@ -325,7 +329,7 @@ totalmoves--;
                         text = "Invalid tile(s) chosen";
                     }
                     if (already != 1) {
-                        text = "dont' repeat matches!";
+                        text = "Match Repeated.";
                     }
 
                     if (already == 1 && count == 0) {
@@ -346,7 +350,7 @@ totalmoves--;
             }
         } else if (symb != 'O' && symb != 'S') {
 
-            Toast toast = Toast.makeText(getApplicationContext(), "select s or o first.", duration);
+            Toast toast = Toast.makeText(getApplicationContext(), "Select a letter first.", duration);
             toast.show();
             symb = 'G';
         } else {
@@ -354,7 +358,7 @@ totalmoves--;
             //textView1.setText(sym);
             if (!textView1.getText().equals("S") && !textView1.getText().equals("O")) {
                 textView1.setText(getString(R.string.days, sym));
-                Toast toast = Toast.makeText(getApplicationContext(), "success in placing..", duration);
+                Toast toast = Toast.makeText(getApplicationContext(), "Successfully placed!", duration);
                 toast.show();
             } else {
                 Toast toasty = Toast.makeText(getApplicationContext(), "Tile already full", duration);
@@ -370,3 +374,4 @@ totalmoves--;
 
 
 }
+//finito! that was shorter than expected.

@@ -11,10 +11,24 @@
         android:id="@+id/plain_text_input"
         android:layout_width="274dp"
         android:layout_height="72dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="188dp"
+        android:hint="Friend's Phone #"
+        android:inputType="phone"
+        android:textColor="@color/midlime_green"
+        android:textColorHint="@color/midlime_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/plain_text_input2"
+        android:layout_width="274dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
         android:layout_marginTop="112dp"
-        android:hint=" Phone # here (w/Country code)"
+        android:hint="Your Phone #"
         android:inputType="phone"
         android:textColor="@color/midlime_green"
         android:textColorHint="@color/midlime_green"
@@ -51,12 +65,12 @@
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="415dp"
+        android:layout_width="389dp"
         android:layout_height="62dp"
         android:layout_marginTop="24dp"
         android:background="@color/bg_screen3"
-        android:textColor="@color/intense_deep_purple"
         android:text="Enter a friend's number below,\n invite them for a game of SOS!"
+        android:textColor="@color/intense_deep_purple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

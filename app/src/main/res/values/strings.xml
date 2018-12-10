@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Intro Slider</string>
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
@@ -8,20 +8,22 @@
     <string name="start">Lemme play :/</string>
     <string name="player1">Player 1 Score : %s</string>
     <string name="player2">Player 2 Score : %s</string>
-    <string name="title"><font size="25">S O S \n A new way to play tic-tac-toe!</font></string>
+    <string name="title"><font size="25">S O S \n \n A new way to play tic-tac-toe!</font></string>
 
 
-    <string name="slide_1_title">Hello sos!</string>
-    <string name="slide_1_desc">Welcome to our app.</string>
+    <string name="slide_1_title">Welcome to our SOS app!</string>
+    <string name="slide_1_desc">This game\'s just like \n tic-tac-toe, with a dash of complexity.</string>
 
-    <string name="slide_2_title">This game\'s just like tic-tac-toe,</string>
-    <string name="slide_2_desc">Except with a dash of complexity</string>
+    <string name="slide_2_title">Either player can place \n S or O on the board </string>
+    <string name="slide_2_desc" tools:ignore="ExtraTranslation">String them to make matches; make S-O-S chains!</string>
 
-    <string name="slide_3_title">Get points matching S-O-S</string>
-    <string name="slide_3_desc">Vertically, horizontally or diagonally</string>
 
-    <string name="slide_4_title">Get a match? Make another move! Rack up those points!</string>
-    <string name="slide_4_desc">Enough talk! Let\'s play.</string>
+
+    <string name="slide_3_title"> You can match  \n horizontally, vertically, \n or diagonally in straight lines! </string>
+    <string name="slide_3_desc"> Get a match?\n Make another move!\n Rack up those points!</string>
+
+    <string name="slide_4_title">Don\'t match on your turn? Your foe can use it himself!</string>
+    <string name="slide_4_desc">That\'s all we\'ve got! \n Enjoy the game! ^_^</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>

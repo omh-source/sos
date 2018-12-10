@@ -1,4 +1,5 @@
 package com.example.omkar.retrapstep3;
+
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -7,35 +8,25 @@ import android.os.Bundle;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.net.Uri;
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.app.Activity;
-
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
-import android.text.TextWatcher;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.EditText;
+
 public class smsexp extends AppCompatActivity {
-    //This code was taken from tutorialspoint.com and modified to work with this app
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     Button sendBtn;
     EditText txtphoneNo;
+    EditText txtphoneNo2;
     EditText txtMessage;
     String phoneNo;
     String message;
+    String senderNo;
     TextView textView1;
 
     @Override
@@ -45,7 +36,7 @@ public class smsexp extends AppCompatActivity {
 
         sendBtn = (Button) findViewById(R.id.button29);
         txtphoneNo = (EditText) findViewById(R.id.plain_text_input);
-
+        txtphoneNo2 = (EditText) findViewById(R.id.plain_text_input2);
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -56,41 +47,49 @@ public class smsexp extends AppCompatActivity {
 
     public void backwego(View view) {
 
-            textView1 = (TextView) findViewById(view.getId());
+        textView1 = (TextView) findViewById(view.getId());
 
-            textView1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(smsexp.this, Menu.class));
-                }
-            });}
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(smsexp.this, Menu.class));
+            }
+        });
+    }
 
 
     protected void sendSMSMessage() {
         phoneNo = txtphoneNo.getText().toString();
+        senderNo = txtphoneNo2.getText().toString();
         message = "Hi, you were invited for a game of SOS!";
-        Log.e("phone=",phoneNo);
-
+        Log.e("reciever=", phoneNo);
+        Log.e("sender=", senderNo);
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.SEND_SMS)) {
+
+                Log.i("if brack,", "");
             } else {
+                Log.i("else brack,", "");
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.SEND_SMS},
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
             }
         }
+        sendSMS();
+        Log.i("defaults to no brack,", "");
     }
+
     protected void sendSMS() {
         Log.i("Send SMS", "");
         Intent smsIntent = new Intent(Intent.ACTION_VIEW);
 
         smsIntent.setData(Uri.parse("smsto:"));
         smsIntent.setType("vnd.android-dir/mms-sms");
-        smsIntent.putExtra("address"  , new String ("01234"));
-        smsIntent.putExtra("sms_body"  , "Test ");
+        smsIntent.putExtra("address", new String(phoneNo));
+        smsIntent.putExtra("sms_body", message);
 
         try {
             startActivity(smsIntent);
@@ -98,16 +97,17 @@ public class smsexp extends AppCompatActivity {
             Log.i("Finished sending SMS...", "");
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(smsexp.this,
-                    "SMS faild, please try again later.", Toast.LENGTH_SHORT).show();
+                    "SMS failed, please try again later.", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
-        Log.e("requestciode", Integer.toString(requestCode));
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        Log.e("requestcode", Integer.toString(requestCode));
         Log.e("perms", permissions.toString());
         Log.e("grantresults", grantResults.toString());
+
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_SEND_SMS: {
 
@@ -128,14 +128,22 @@ public class smsexp extends AppCompatActivity {
     }
 
 
-
     public void saiv(View view) {
+        sendBtn = (Button) findViewById(R.id.button29);
+        txtphoneNo = (EditText) findViewById(R.id.plain_text_input);
+        txtphoneNo2 = (EditText) findViewById(R.id.plain_text_input2);
+
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage("+12178190132", null, "sms message", null, null);
-        EditText x = (EditText)findViewById(R.id.plain_text_input);
+
+        phoneNo = txtphoneNo.getText().toString();
+        senderNo = txtphoneNo2.getText().toString();
+        smsManager.sendTextMessage(new String(senderNo), null, "sms message", null, null);
+        EditText x = (EditText) findViewById(R.id.plain_text_input);
         Editable y = x.getText();
-        x.setText("Taxi.",null);
+        Log.i("failed at saiv", "");
+        x.setText("Taxi.", null);
         String str = x.getText().toString();
     }
 
 }
+//This code was excerpted from tutorialspoint.com and modified to work with this app

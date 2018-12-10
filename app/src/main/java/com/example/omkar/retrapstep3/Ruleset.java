@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Ruleset extends AppCompatActivity {
+public class Ruleset extends WelcomeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,16 @@ public class Ruleset extends AppCompatActivity {
     }
     TextView textView1;
     public void returntomenu(View view) {
+        textView1 = (TextView) findViewById(view.getId());
+
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Ruleset.this, WelcomeActivity.class));
+            }
+        });}
+
+    public void reallyreturn(View view) {
         textView1 = (TextView) findViewById(view.getId());
 
         textView1.setOnClickListener(new View.OnClickListener() {
